@@ -1,0 +1,11 @@
+<li [ngClass]="{'list-group-item':true , 'list-group-item-danger': serviceStatus === 'Annulé','list-group-item-success': serviceStatus === 'Non-Annulé'}">
+    <div class="feu" *ngIf="serviceStatus === 'Annulé'"></div>
+    <div class="vert" *ngIf="serviceStatus === 'Non-Annulé'"></div>
+    <h4 [ngStyle]="{color:getColor()}">Course : {{ serviceName }} >>> {{ getStatus() }} </h4>
+    
+    <input type="text" class="form-control" [(ngModel)]="serviceName">
+
+
+
+</li>
+
