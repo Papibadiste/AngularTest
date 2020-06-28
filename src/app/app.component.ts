@@ -1,11 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { serviceSERVICES } from './SERVICES/service.SERVICES';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   
   isAuth = false ;
   lastUpdate = new Promise(
@@ -19,32 +20,10 @@ export class AppComponent {
     }
   );
 
-  services=[
-    {
-      name: 'Ambazac',
-      status: 'Annulé'
-    },
-    {
-      name: 'Course2',
-      status: 'Non-Annulé'
-    },
-    {
-      name: 'Course3',
-      status: 'Annulé'
-    },
-    {
-      name: 'Course4',
-      status: 'Annulé'
-    },
-    {
-      name: 'Course5',
-      status: 'Non-Annulé'
-    },
-
-  ];
+ services: any [];
 
 
-  constructor() {
+  constructor(private serviceSERVICES: serviceSERVICES) {
     
     setTimeout(
       () => {
@@ -54,8 +33,18 @@ export class AppComponent {
     
   }
 
+  ngOnInit(){
+    this.services = this.serviceSERVICES.services;
+  }
+
   onAllumer(){
-    console.log('oui');
+    this.serviceSERVICES.switchOnAll();
+  }
+  onAnnuler(){
+    this.serviceSERVICES.switchOffAll();
+  }
+  swapAll(){
+    this.serviceSERVICES.switchAll();
   }
  
  

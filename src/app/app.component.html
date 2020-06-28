@@ -7,11 +7,16 @@
       
       <ul class="list-group">
         
-          <app-service *ngFor="let service of services" [serviceName]="service.name" [serviceStatus]="service.status"></app-service>
+          <app-service *ngFor="let service of services;let i=index"
+           [indexOfService]="i"
+           [serviceName]="service.name" 
+           [serviceStatus]="service.status"></app-service>
 
           
       </ul>
-      <button class="btn btn-success" (click)="onAllumer()" [disabled]="!isAuth">Validation</button>
+      <button class="btn btn-success" (click)="onAllumer()" >Validation</button> 
+      <button class="btn btn-danger" (click)="onAnnuler()" >Annulation</button> 
+      <button class="btn btn-info" (click)="swapAll()" >SwapAll</button>
     </div>
   </div>
 </div>

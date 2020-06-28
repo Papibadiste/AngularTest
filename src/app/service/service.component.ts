@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { serviceSERVICES } from '../SERVICES/service.SERVICES';
 
 @Component({
   selector: 'app-service',
@@ -9,7 +10,8 @@ export class ServiceComponent implements OnInit {
 
   @Input() serviceName:string;
   @Input() serviceStatus:string;
-  constructor() { }
+  @Input() indexOfService:number;
+  constructor(private serviceSERVICES: serviceSERVICES) { }
 
   ngOnInit(): void {
   }
@@ -26,9 +28,12 @@ export class ServiceComponent implements OnInit {
     {
       return 'green';
     }
-    else if(this.serviceStatus === 'Non-Annulé')
+    else
     {
       return 'black';
     }
+  }
+  swapOne(){
+    this.serviceSERVICES.switchOne(this.indexOfService);
   }
 }
