@@ -1,0 +1,18 @@
+<div class="col-xs-12">
+      
+    <h2>Liste de trail coronned</h2>
+    <p>Mises a jour : {{lastUpdate | async | date: 'longDate' }}</p>
+    
+    <ul class="list-group">
+      
+        <app-service *ngFor="let service of services;let i=index"
+         [indexOfService]="i"
+         [serviceName]="service.name" 
+         [serviceStatus]="service.status"></app-service>
+
+        
+    </ul>
+    <button class="btn btn-success" (click)="onAllumer()" >Validation</button> 
+    <button class="btn btn-danger" (click)="onAnnuler()" >Annulation</button> 
+    <button class="btn btn-info" (click)="swapAll()" >SwapAll</button>
+  </div>

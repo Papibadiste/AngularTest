@@ -8,21 +8,37 @@ import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { ServiceComponent } from './service/service.component';
 import { serviceSERVICES } from './SERVICES/service.SERVICES';
+import { AuthComponent } from './auth/auth.component';
+import { ServicesViewComponent } from './services-view/services-view.component';
+import { RouterModule } from '@angular/router';
+import { Routes } from '@angular/router';
+import { AuthSERVICES } from './SERVICES/auth.SERVICES';
+
+
+const appRoutes: Routes = [
+  { path: 'services', component: ServicesViewComponent},
+  { path: 'auth', component: AuthComponent},
+  { path: '', component: ServicesViewComponent}
+];
   
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ServiceComponent
+    ServiceComponent,
+    AuthComponent,
+    ServicesViewComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [
-    serviceSERVICES
+    serviceSERVICES,
+    AuthSERVICES
   ],
   bootstrap: [AppComponent]
 })
