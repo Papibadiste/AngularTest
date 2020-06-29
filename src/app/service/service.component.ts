@@ -7,7 +7,7 @@ import { serviceSERVICES } from '../SERVICES/service.SERVICES';
   styleUrls: ['./service.component.scss']
 })
 export class ServiceComponent implements OnInit {
-
+  @Input() id:number;
   @Input() serviceName:string;
   @Input() serviceStatus:string;
   @Input() indexOfService:number;

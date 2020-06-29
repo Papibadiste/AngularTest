@@ -8,7 +8,8 @@
         <app-service *ngFor="let service of services;let i=index"
          [indexOfService]="i"
          [serviceName]="service.name" 
-         [serviceStatus]="service.status"></app-service>
+         [serviceStatus]="service.status"
+         [id]="service.id"></app-service>
 
         
     </ul>

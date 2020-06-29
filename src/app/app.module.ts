@@ -13,10 +13,12 @@ import { ServicesViewComponent } from './services-view/services-view.component';
 import { RouterModule } from '@angular/router';
 import { Routes } from '@angular/router';
 import { AuthSERVICES } from './SERVICES/auth.SERVICES';
+import { SingleServicesComponent } from './single-services/single-services.component';
 
 
 const appRoutes: Routes = [
   { path: 'services', component: ServicesViewComponent},
+  { path: 'services/:id', component: SingleServicesComponent},
   { path: 'auth', component: AuthComponent},
   { path: '', component: ServicesViewComponent}
 ];
@@ -28,7 +30,8 @@ const appRoutes: Routes = [
     AppComponent,
     ServiceComponent,
     AuthComponent,
-    ServicesViewComponent
+    ServicesViewComponent,
+    SingleServicesComponent
   ],
   imports: [
     BrowserModule,

@@ -2,7 +2,7 @@
     <div class="feu" *ngIf="serviceStatus === 'Annulé'"></div>
     <div class="vert" *ngIf="serviceStatus === 'Non-Annulé'"></div>
     <h4 [ngStyle]="{color:getColor()}">Course : {{ serviceName }} >>> {{ getStatus() }} </h4>
-    
+    <a [routerLink]="[id]">Voir les details</a>
     <input type="text" class="form-control" [(ngModel)]="serviceName">
     <button class="btn btn-primary" (click)="swapOne()" >Swap</button>
 

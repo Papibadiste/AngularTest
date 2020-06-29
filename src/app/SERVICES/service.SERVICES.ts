@@ -3,26 +3,40 @@ import { Injectable } from "@angular/core";
 export class serviceSERVICES {
   services = [
     {
+      id: 1,
       name: 'Ambazac',
       status: 'Annulé',
     },
     {
+      id: 2,
       name: 'La foulée du populaire',
       status: 'Non-Annulé',
     },
     {
+      id: 3,
       name: 'Saint-Auvent',
       status: 'Annulé',
     },
     {
+      id: 4,
       name: 'Feytiat',
       status: 'Annulé',
     },
     {
+      id: 5,
       name: 'Vicq-sur-Breuil',
       status: 'Non-Annulé',
     },
   ];
+
+  getSarvicesByID(id:number){
+    const service = this.services.find(
+      (serviceObjet) => {
+        return serviceObjet.id ===id;
+      }
+    );
+    return service;
+  }
 
   switchOnAll() {
     for (let service of this.services) {
