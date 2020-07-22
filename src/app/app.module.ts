@@ -14,13 +14,17 @@ import { RouterModule } from '@angular/router';
 import { Routes } from '@angular/router';
 import { AuthSERVICES } from './SERVICES/auth.SERVICES';
 import { SingleServicesComponent } from './single-services/single-services.component';
+import { Page404Component } from './page404/page404.component';
 
 
 const appRoutes: Routes = [
-  { path: 'services', component: ServicesViewComponent},
+  
   { path: 'services/:id', component: SingleServicesComponent},
   { path: 'auth', component: AuthComponent},
-  { path: '', component: ServicesViewComponent}
+  { path: 'not-found', component: Page404Component},
+  { path: 'services', component: ServicesViewComponent},
+  { path: '', component:AuthComponent},
+  { path: '**', redirectTo: '/not-found'}
 ];
   
 
@@ -31,7 +35,8 @@ const appRoutes: Routes = [
     ServiceComponent,
     AuthComponent,
     ServicesViewComponent,
-    SingleServicesComponent
+    SingleServicesComponent,
+    Page404Component
   ],
   imports: [
     BrowserModule,

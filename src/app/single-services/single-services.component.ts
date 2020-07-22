@@ -11,13 +11,17 @@ export class SingleServicesComponent implements OnInit {
 
   name:string = 'service';
   status:string = 'status';
+  description:string = 'description';
+  temps:string = 'temps';
   constructor(private serviceSERVICES: serviceSERVICES,
               private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     const id = this.route.snapshot.params["id"];
-    this.name = this.serviceSERVICES.getSarvicesByID(+id).name
-    this.status = this.serviceSERVICES.getSarvicesByID(+id).status
+    this.name = this.serviceSERVICES.getServicesByID(+id).name
+    this.status = this.serviceSERVICES.getServicesByID(+id).status
+    this.description = this.serviceSERVICES.getServicesByID(+id).description
+    this.temps = this.serviceSERVICES.getServicesByID(+id).temps
   }
 
 }
