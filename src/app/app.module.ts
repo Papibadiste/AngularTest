@@ -15,15 +15,18 @@ import { Routes } from '@angular/router';
 import { AuthSERVICES } from './SERVICES/auth.SERVICES';
 import { SingleServicesComponent } from './single-services/single-services.component';
 import { Page404Component } from './page404/page404.component';
+import { AuthGuard } from './SERVICES/auth-guard.SERVICES';
+
 
 
 const appRoutes: Routes = [
   
-  { path: 'services/:id', component: SingleServicesComponent},
+  { path: 'services/:id',canActivate: [AuthGuard], component: SingleServicesComponent},
+  { path: '',canActivate: [AuthGuard], component:AuthComponent},
   { path: 'auth', component: AuthComponent},
   { path: 'not-found', component: Page404Component},
-  { path: 'services', component: ServicesViewComponent},
-  { path: '', component:AuthComponent},
+  { path: 'services', canActivate: [AuthGuard], component: ServicesViewComponent},
+ 
   { path: '**', redirectTo: '/not-found'}
 ];
   
@@ -46,7 +49,8 @@ const appRoutes: Routes = [
   ],
   providers: [
     serviceSERVICES,
-    AuthSERVICES
+    AuthSERVICES,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })

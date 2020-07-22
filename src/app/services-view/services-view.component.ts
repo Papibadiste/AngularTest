@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { serviceSERVICES } from '../SERVICES/service.SERVICES';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-services-view',
@@ -21,6 +22,7 @@ export class ServicesViewComponent implements OnInit {
   );
 
  services: any [];
+ servicesSubcription: Subscription;
 
 
   constructor(private serviceSERVICES: serviceSERVICES) {
@@ -34,7 +36,12 @@ export class ServicesViewComponent implements OnInit {
   }
 
   ngOnInit(){
-    this.services = this.serviceSERVICES.services;
+    this.servicesSubcription = this.serviceSERVICES.servicesSubject.subscribe(
+      (services:any[]) => {
+        this.services = services
+      }
+    );
+    this.serviceSERVICES.emitServicesSubject();
   }
 
   onAllumer(){

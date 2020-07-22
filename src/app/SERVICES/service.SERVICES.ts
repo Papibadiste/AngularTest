@@ -1,7 +1,11 @@
 import { Injectable } from "@angular/core";
+import {Subject} from "rxjs";
 @Injectable()
 export class serviceSERVICES {
-  services = [
+
+  servicesSubject = new Subject<any[]>();
+  
+  private services = [
     {
       id: 1,
       name: 'Ambazac',
@@ -39,12 +43,17 @@ export class serviceSERVICES {
     },
   ];
 
+  emitServicesSubject(){
+    this.servicesSubject.next(this.services.slice())
+  }
+
   getServicesByID(id:number){
     const service = this.services.find(
       (serviceObjet) => {
         return serviceObjet.id ===id;
-      }
+      },
     );
+    this.emitServicesSubject();
     return service;
   }
 
@@ -52,11 +61,13 @@ export class serviceSERVICES {
     for (let service of this.services) {
       service.status = 'Non-Annulé';
     }
+    this.emitServicesSubject();
   }
   switchOffAll() {
     for (let service of this.services) {
       service.status = 'Annulé';
     }
+    this.emitServicesSubject();
   }
   switchAll() {
     for (let service of this.services) {
@@ -66,6 +77,7 @@ export class serviceSERVICES {
         service.status = 'Annulé';
       }
     }
+    this.emitServicesSubject();
   }
   switchOne(index: number) {
     if (this.services[index].status === 'Annulé') {
@@ -73,5 +85,6 @@ export class serviceSERVICES {
     } else if (this.services[index].status === 'Non-Annulé') {
       this.services[index].status = 'Annulé';
     }
+    this.emitServicesSubject();
   }
 }
